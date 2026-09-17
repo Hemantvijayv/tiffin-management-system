@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KitchenLedger | Tiffin Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Operational dashboard</p>
+        <h1>KitchenLedger</h1>
+      </div>
+      <div class="month-control">
+        <label for="month-picker">Billing month</label>
+        <input id="month-picker" type="month">
+      </div>
+    </header>
+
+    <section class="stats-grid">
+      <article class="stat-card accent">
+        <span>Total customers</span>
+        <strong id="stat-customers">0</strong>
+      </article>
+      <article class="stat-card success">
+        <span>Active</span>
+        <strong id="stat-active">0</strong>
+      </article>
+      <article class="stat-card warning">
+        <span>Paused</span>
+        <strong id="stat-paused">0</strong>
+      </article>
+      <article class="stat-card neutral">
+        <span>Served this month</span>
+        <strong id="stat-served">0</strong>
+      </article>
+      <article class="stat-card revenue">
+        <span>Monthly billing</span>
+        <strong id="stat-revenue">₹0.00</strong>
+      </article>
+    </section>
+
+    <main class="two-column">
+      <section class="panel">
+        <div class="panel-head">
+          <h2>New customer</h2>
+        </div>
+        <form id="subscribe-form" class="stacked-form">
+          <label>
+            <span>Customer name</span>
+            <input id="s-name" type="text" placeholder="e.g. Sunita Verma" required>
+          </label>
+          <label>
+            <span>Phone number</span>
+            <input id="s-phone" type="tel" placeholder="e.g. 9876543210" required>
+          </label>
+          <label>
+            <span>Monthly plan</span>
+            <input id="s-price" type="number" min="0" step="1" placeholder="e.g. 3200" required>
+          </label>
+          <button type="submit" class="primary-btn">Add subscription</button>
+        </form>
+        <p id="s-msg" class="form-message"></p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Lookup by phone</h2>
+        </div>
+        <div class="search-row">
+          <input id="lookup-phone" type="tel" placeholder="Search customer phone">
+          <button id="lookup-btn" class="secondary-btn">Search</button>
+        </div>
+        <div id="lookup-result" class="lookup-result empty-state">Enter a phone number to view membership details.</div>
+      </section>
+    </main>
+
+    <section class="panel roster-panel">
+      <div class="panel-head roster-header">
+        <h2>Customer roster</h2>
+        <div class="toolbar">
+          <input id="customer-search" type="search" placeholder="Search by name or phone">
+          <select id="status-filter">
+            <option value="all">All status</option>
+            <option value="active">Active</option>
+            <option value="paused">Paused</option>
+          </select>
+          <button id="refresh-btn" class="secondary-btn">Refresh</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table id="customer-table">
+          <thead>
+            <tr>
+              <th>Customer</th>
+              <th>Phone</th>
+              <th>Plan</th>
+              <th>Status</th>
+              <th>Delivered</th>
+              <th>Month bill</th>
+              <th>Service log</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
